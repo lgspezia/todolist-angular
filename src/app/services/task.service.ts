@@ -10,9 +10,8 @@ import { Task } from '../models/task';
 })
 export class TaskService {
 
-  url = 'http://localhost:3000/tasks'; // api rest fake
+  url = 'http://localhost:3000/tasks';
 
-  // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
 
   // Headers
@@ -28,7 +27,7 @@ export class TaskService {
         catchError(this.handleError))
   }
 
-  // Obtem um carro pelo id
+  // Obtem uma tarefa pelo id
   getTaskById(id: number): Observable<Task> {
     return this.httpClient.get<Task>(this.url + '/' + id)
       .pipe(
@@ -37,7 +36,7 @@ export class TaskService {
       )
   }
 
-  // salva um carro
+  // salva um tarefa
   saveTask(task: Task): Observable<Task> {
     return this.httpClient.post<Task>(this.url, JSON.stringify(task), this.httpOptions)
       .pipe(
@@ -46,7 +45,7 @@ export class TaskService {
       )
   }
 
-  // utualiza um carro
+  // Atualiza uma tarefa
   updateTask(task: Task): Observable<Task> {
     return this.httpClient.put<Task>(this.url + '/' + task.id, JSON.stringify(task), this.httpOptions)
       .pipe(
@@ -55,7 +54,7 @@ export class TaskService {
       )
   }
 
-  // Deleta um carro
+  // Apaga uma tarefa
   deleteTask(task: Task) {
     return this.httpClient.delete<Task>(this.url + '/' + task.id, this.httpOptions)
       .pipe(
@@ -68,10 +67,10 @@ export class TaskService {
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // Erro ocorreu no lado do client
+      // Erro no client
       errorMessage = error.error.message;
     } else {
-      // Erro ocorreu no lado do servidor
+      // Erro no servidor
       errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
     }
     console.log(errorMessage);

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { TaskService } from './services/task.service';
 import { Task } from './models/task';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
        public clique(str: string): string[] {
         this.listTodo.push(str);
-        return this.listTodo
+        return this.listTodo;
       }
 
       //// regras de consumo e persistencia dos dados
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // copia o carro para ser editado.
+  // copia a tarefa para ser editado.
   editTask(car: Task) {
     this.task = { ...car };
   }

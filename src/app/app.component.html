@@ -88,10 +88,11 @@
               <td>{{task.id}}</td>
               <td>{{task.title}}</td>
               <td>{{task.color}}</td>
-              <td>{{task.subtitle | currency}}</td>
+              <td>{{task.subtitle}}</td>
+              <!--<td>{{task.subtitle | currency}}</td>-->
               <td>
-                <button type="button" class="btn btn-warning btn-sm" (click)="editTask(car)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteTasks(car)">Deletar</button>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editTask(task)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteTasks(task)">Deletar</button>
               </td>
             </tr>
           </tbody>
@@ -105,7 +106,7 @@
           <form id="add-form" (ngSubmit)="f.form.valid && saveTask(f)" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="model">Modelo</label>
-                <input type="text" [(ngModel)]="task.model" id="model" name="model" #model="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" placeholder="Digite o modelo">
+                <input type="text" [(ngModel)]="task.title" id="model" name="model" #model="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" placeholder="Digite o titulo">
                 <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
                     <div *ngIf="model.errors.required">Modelo é obrigatório</div>
                 </div>
@@ -119,7 +120,7 @@
             </div>
             <div class="form-group">
                 <label for="price">Preço</label>
-                <input type="number" [(ngModel)]="task.price" id="price" name="price" #price="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite o preço">
+                <input type="number" [(ngModel)]="task.subtitle" id="price" name="price" #price="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite a descrição">
                 <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
                     <div *ngIf="price.errors.required">Preço é obrigatório</div>
                 </div>

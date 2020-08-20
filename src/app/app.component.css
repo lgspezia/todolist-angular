@@ -1,0 +1,48 @@
+
+.h80 {
+  height:80px
+}
+
+.h60 {
+  height: 60px;
+}
+.h40 {
+  height: 40px;
+}
+
+.h100 {
+  height:100px;
+}
+
+.w300 {
+  width:300px;
+}
+
+.fundo-bg {
+  background-color: dimgray;
+}
+
+.fundo-bg-gray {
+  background-color:lightgray;
+}
+
+.bg-task {
+  background-color: midnightblue;
+}
+
+/*** * ***/
+.container {
+  margin-top: 30px;
+}
+
+.add-car {
+  margin-bottom: 30px;
+}
+
+.list-car {
+  margin-bottom: 50px;
+}
+
+.btn-add-car {
+  margin-right: 10px;
+}

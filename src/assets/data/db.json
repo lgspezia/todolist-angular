@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Tarefa 1",
+      "subtitle": "Legenda Tarefa 1",
+      "color": "Preto",
+      "status": "done",
+      "edited": true
+    },
+    {
+      "id": 2,
+      "title": "Limpar o Chão",
+      "subtitle": "fazer limpeza das partes",
+      "color": "Azul",
+      "status": "todo",
+      "edited": false
+    },
+    {
+      "id": 3,
+      "title": "Lavar a Louça",
+      "subtitle": "fazer limpeza dos pratos",
+      "color": "Branco",
+      "status": "done",
+      "edited": false
+    },
+    {
+      "id": 3,
+      "title": "Encerar o carro",
+      "subtitle": "higienizar o auto",
+      "color": "Vermelho",
+      "status": "done",
+      "edited": false
+    }
+  ]
+}

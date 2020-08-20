@@ -1,0 +1,20 @@
+
+.center {
+  text-align: center;
+}
+
+.pad-2 {
+  padding: 0 20px;
+}
+
+.linha {
+  border: solid 1px #000;
+}
+
+.fundo-f {
+  background-color: burlywood;
+}
+
+.fundo-a {
+  background-color: cadetblue;
+}

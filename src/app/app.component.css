@@ -46,3 +46,12 @@
 .btn-add-car {
   margin-right: 10px;
 }
+
+.margem {
+  margin-bottom: 10px;
+}
+
+.divisor {
+  margin-top: 10px;
+  border-top: solid 1px #cdcdcd;
+}

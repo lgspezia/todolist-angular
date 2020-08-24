@@ -9,14 +9,6 @@
       "edited": true
     },
     {
-      "id": 2,
-      "title": "Limpar o Chão",
-      "subtitle": "fazer limpeza das partes",
-      "color": "Azul",
-      "status": "todo",
-      "edited": false
-    },
-    {
       "id": 3,
       "title": "Lavar a Louça",
       "subtitle": "fazer limpeza dos pratos",
@@ -30,6 +22,30 @@
       "subtitle": "higienizar o auto",
       "color": "Vermelho",
       "status": "done",
+      "edited": false
+    },
+    {
+      "id": 4,
+      "title": "ler ler",
+      "subtitle": "ler ler",
+      "color": "",
+      "status": "",
+      "edited": false
+    },
+    {
+      "id": 5,
+      "title": "fazer",
+      "subtitle": "fazer",
+      "color": "",
+      "status": "",
+      "edited": false
+    },
+    {
+      "id": 6,
+      "title": "fff",
+      "subtitle": "fff",
+      "color": "",
+      "status": "",
       "edited": false
     }
   ]

@@ -6,6 +6,7 @@
   <!--<img width="300" alt=" Logo" src="">-->
 </div>
 
+
 <!--Division for Lista de itens heading-->
 <div class="container-fluid">
 	<div class="row fundo-bg justify-content-center
@@ -35,34 +36,34 @@
 		</div>
 
 		<div class="col-3 d-none col-md-3 d-md-block"></div>
-	</div>
+  </div>
 
-	<!--Tasks added repeated divisions-->
-	<div *ngFor="let x of items; let index = index;"
-			class="row mt-1 h60">
+<hr class="mt-3 mb-3"/>
+<!-- To Do List -->
+<app-todo-list [listTodo]="items" [listDone]="feitos" (change)="clique(items.lastIndexOf())"></app-todo-list>
 
-		<div class="col-3 d-none col-md-3 d-md-block"></div>
+<hr class="mt-3 mb-3"/>
 
-		<div class="col-12 col-md-6 d-flex bg-task
+  <!--Adicionar a tarefa em Lista-->
+  <div class="row">
+	<div *ngFor="let task of tasks; let index = index;"
+			class="col-sm-2 mt-1 p-1">
+
+		<!--<div class="d-none col-md d-md-block"></div>-->
+		<div class="col-md d-flex bg-task
 					justify-content-center align-items-center
 					text-light">
-
-			<div class="col-9 text-light h3">{{x}}</div>
-
+			<div class="col text-light h5 card-body">{{task.title}}</div>
 			<input (click)="deleteTask(index)" type="button"
-				value="Apagar" class="col-2 btn btn-outline-danger">
+				value="Apagar" class="col btn btn-outline-danger">
 		</div>
-
-    <div class="col-3 d-none col-md-3 d-md-block"></div>
-
-	</div>
+    <!--<div class=" d-none col-md-6 d-md-block"></div>-->
+  </div>
+  </div>
 </div>
 
-<!-- To Do List -->
-<app-todo-list [listTodo]="items" (change)="clique(items.lastIndexOf())"></app-todo-list>
 
-
-
+<div class="divisor"></div>
 <!--- Lista ---->
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -70,17 +71,18 @@
   </ol>
 </nav>
 <div class="container">
-  <div class="card list-car">
+  <div class="row">
+  <div class="col-md-8 card list-car">
     <h5 class="card-header">Lista de tarefas</h5>
     <div class="card-body">
       <table class="table">
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Modelo</th>
-              <th scope="col">Cor</th>
-              <th scope="col">Preço</th>
-              <th scope="col">Ações</th>
+              <th scope="col">Tarefa</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Subtitulo</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -92,7 +94,7 @@
               <!--<td>{{task.subtitle | currency}}</td>-->
               <td>
                 <button type="button" class="btn btn-warning btn-sm" (click)="editTask(task)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteTasks(task)">Deletar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteTasks(task)">Apagar</button>
               </td>
             </tr>
           </tbody>
@@ -100,34 +102,48 @@
     </div>
   </div>
 
-  <div class="card add-car">
-      <h5 class="card-header">Adicionar/Atualizar carro</h5>
+  <div class="col-md-4 card add-car">
+      <h5 class="card-header">Adicionar ou Alterar Tarefas</h5>
       <div class="card-body">
-          <form id="add-form" (ngSubmit)="f.form.valid && saveTask(f)" #f="ngForm" novalidate>
+          <form id="add-form" #assign="ngForm" (ngSubmit)="assign.form.valid && saveTask(assign)" novalidate>
             <div class="form-group">
-                <label for="model">Modelo</label>
-                <input type="text" [(ngModel)]="task.title" id="model" name="model" #model="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" placeholder="Digite o titulo">
-                <div *ngIf="f.submitted && model.invalid" class="invalid-feedback">
-                    <div *ngIf="model.errors.required">Modelo é obrigatório</div>
+                <label for="model">Título</label>
+                <input type="text" [(ngModel)]="task.title" id="model" name="model" #model="ngModel" required class="form-control"
+                [ngClass]="{ 'is-invalid': assign.submitted && model.invalid }" placeholder="Digite o titulo">
+                <div *ngIf="assign.submitted && model.invalid" class="invalid-feedback">
+                    <div *ngIf="model.errors.required">O título é obrigatório</div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="color">Cor</label>
-                <input type="text" [(ngModel)]="task.color" id="color" name="color" #color="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && color.invalid }" placeholder="Digite a cor">
-                <div *ngIf="f.submitted && color.invalid" class="invalid-feedback">
-                    <div *ngIf="color.errors.required">Cor é obrigatória</div>
+                <label for="color">Tipo</label>
+                <input type="text" [(ngModel)]="task.color" id="color" name="color" #color="ngModel" required class="form-control"
+                [ngClass]="{ 'is-invalid': assign.submitted && color.invalid }" placeholder="Defina um tipo">
+                <div *ngIf="assign.submitted && color.invalid" class="invalid-feedback">
+                    <div *ngIf="color.errors.required">O tipo é obrigatório</div>
                 </div>
             </div>
+
             <div class="form-group">
+              <label for="color">Descrição</label>
+              <input type="text" [(ngModel)]="task.subtitle" id="color" name="color" #color="ngModel" required class="form-control"
+              [ngClass]="{ 'is-invalid': assign.submitted && color.invalid }" placeholder="Descreva a tarefa">
+              <div *ngIf="assign.submitted && color.invalid" class="invalid-feedback">
+                  <div *ngIf="color.errors.required">A descrição é obrigatória</div>
+              </div>
+          </div>
+
+            <!--<div class="form-group">
                 <label for="price">Preço</label>
                 <input type="number" [(ngModel)]="task.subtitle" id="price" name="price" #price="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite a descrição">
                 <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
                     <div *ngIf="price.errors.required">Preço é obrigatório</div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
-            <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+            </div>-->
+            <button type="submit" class="btn btn-success btn-add-car">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(assign)">Cancelar</button>
           </form>
       </div>
     </div>
+    </div>
 </div>
+<hr class="mt-3 mb-3"/>

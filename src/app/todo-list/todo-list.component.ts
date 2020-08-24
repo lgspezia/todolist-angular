@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Task } from '../models/task';
 import { CdkDragDrop, moveItemInArray, transferArrayItem,
   CdkDropList, CdkDropListContainer, CdkDropListGroup, CdkDropListInternal } from '@angular/cdk/drag-drop';
 
@@ -10,45 +11,57 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem,
 export class TodoListComponent implements OnInit {
 
   @Input() listTodo: string[];
+  @Input() listDone: string[];
+
+  @Input() listItemTodo: Task[];
+  @Input() listItemDone: Task[];
+
+    // lista para testes
+    todo = [
+      'Ir para Academia',
+      'Almocar',
+      'Tirar um descanso',
+      'Estudar'
+    ];
+
+    // todo = this.listTodo;
+
+    done = [
+      'Acordar',
+      'Fazer o teste',
+      'Escrever codigo',
+      'Praticar Ingles'
+    ];
 
   constructor() {
     this.listTodo = [];
+    this.listDone = [];
+
+    this.listItemTodo = [];
+    this.listItemDone = [];
   }
 
   ngOnInit() {
 
+    if (this.listTodo === []) {
+      //this.listTodo = this.todo;
+    }
+    if (this.listDone === []) {
+      //this.listDone = this.done;
+    }
+
   }
 
-  // lista para testes
-  todo = [
-    'Ir para Academia',
-    'Almocar',
-    'Tirar um descanso',
-    'Estudar'
-  ];
-
-  // todo = this.listTodo;
-
-  done = [
-    'Acordar',
-    'Fazer o teste',
-    'Escrever codigo',
-    'Praticar Ingles'
-  ];
-
   //function for listening to the event
-
   drag(event: CdkDragDrop<string[]>) {
 
-  //if movement if within the same container
-
+  //Movimento dentro da coluna
     if (event.previousContainer === event.container) {
     moveItemInArray(
   event.container.data, event.previousIndex, event.currentIndex);
     }
 
-  //if movement if to other containers
-
+  //Movimento entre as colunas
     else {
     transferArrayItem(event.previousContainer.data,
               event.container.data,
@@ -62,7 +75,12 @@ export class TodoListComponent implements OnInit {
     return this.listTodo
   }
 
+  private validaObj(lista: []) {
+    if (typeof lista === "object") {
+
+    }
+  }
+
 }
 
-/////
 

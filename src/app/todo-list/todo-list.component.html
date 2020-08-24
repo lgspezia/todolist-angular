@@ -8,43 +8,72 @@
 <div class="row pad-2">
   <div class="col-md-6">
   <!-- To-Do list -->
-    <h2>A Fazer</h2>
+    <h2>Itens a Fazer</h2>
+
+    <!--<div class="col-md"
+      cdkDropList
+      #todoLista="cdkDropList"
+      [cdkDropListConnectedTo]="[doneList]"
+      [cdkDropListData]="todoList"
+      (cdkDropListDropped)="drag($event)">
+
+      <div *ngFor="let item of todoList" cdkDrag>
+        <div class="linha fundo-f">
+          {{item}}
+          </div>
+      </div>
+    </div>-->
 
     <div class="col-md"
       cdkDropList
       #todoList="cdkDropList"
-      [cdkDropListConnectedTo]="[doneList]"
-      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneLista]"
+      [cdkDropListData]="listTodo"
       (cdkDropListDropped)="drag($event)">
 
-      <div *ngFor="let item of todo" cdkDrag>
-        <div class="linha fundo-f">
+      <div *ngFor="let item of listTodo" class="card w-100" cdkDrag>
+        <div class="card-body fundo-f p-2">
           {{item}}
           </div>
-
       </div>
     </div>
+
   </div>
 
     <div class="col-md-6">
       <!-- Done list -->
-      <h2>Feitos</h2>
+      <h2>Itens Feitos</h2>
 
       <div class="col-md"
         cdkDropList
-        #doneList="cdkDropList"
+        #doneLista="cdkDropList"
         [cdkDropListConnectedTo]="[todoList]"
-        [cdkDropListData]="done"
+        [cdkDropListData]="listDone"
         class="example-list"
         (cdkDropListDropped)="drag($event)">
 
-        <div *ngFor="let item of done" cdkDrag>
-          <div class="linha fundo-a">
+        <div *ngFor="let item of listDone" class="card w-100" cdkDrag>
+          <div class="card-body fundo-a p-2">
             {{item}}
           </div>
-
         </div>
       </div>
+
+      <!--<div class="col-md"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListConnectedTo]="[todoList]"
+      [cdkDropListData]="done"
+      class="example-list"
+      (cdkDropListDropped)="drag($event)">
+
+      <div *ngFor="let item of done" cdkDrag>
+        <div class="linha fundo-a">
+          {{item}}
+        </div>
+      </div>
+    </div>-->
+
     </div>
 
   </div>

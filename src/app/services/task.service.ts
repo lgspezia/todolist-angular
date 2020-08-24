@@ -11,6 +11,7 @@ import { Task } from '../models/task';
 export class TaskService {
 
   url = 'http://localhost:3000/tasks';
+  // url = http://tasks-prod.k8s-platform-prod-us-east-1.fluig.io/tasks/api-docs?group=v2
 
   constructor(private httpClient: HttpClient) { }
 
